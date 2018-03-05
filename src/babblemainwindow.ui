@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>说都不会话了</string>
+   <string>说都不会话了 0.0.1</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
