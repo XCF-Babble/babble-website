@@ -21,7 +21,7 @@
                                 <button type="button" class="btn btn-primary btn-block" id="babbleButton">不会话&gt;&gt;</button>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary btn-block" id="debabbleButton">&lt;&lt;会话</button>
+                                <button type="button" class="btn btn-primary btn-block" id="debabbleButton">&lt;&lt;会说</button>
                             </div>
                             <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#settingsModal">设置</button>
                         </div>
@@ -104,6 +104,14 @@
                     babbleBase = $('#baseText').val();
                     saveSettings();
                     $('#settingsModal').modal('hide');
+                });
+                $('#plainText').keypress((e) => {
+                    if ((e.ctrlKey || e.metaKey) && (e.keyCode == 10 || e.keyCode == 13))
+                        $('#babbleButton').click();
+                });
+                $('#cipherText').keypress((e) => {
+                    if ((e.ctrlKey || e.metaKey) && (e.keyCode == 10 || e.keyCode == 13))
+                        $('#debabbleButton').click();
                 });
                 $('#babbleButton').click(() => {
                     $('#cipherText').val(babble($('#plainText').val()));
