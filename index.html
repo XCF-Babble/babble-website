@@ -143,10 +143,18 @@
                 return ret.subarray(0, parsed);
             }
             function babble(s) {
-                return hanziEncode(encrypt(s));
+                try {
+                    return hanziEncode(encrypt(s));
+                } catch (e) {
+                    return '';
+                }
             }
             function debabble(s) {
-                return decrypt(hanziDecode(s));
+                try {
+                    return decrypt(hanziDecode(s));
+                } catch (e) {
+                    return '';
+                }
             }
             $(window).ready(async() => {
                 await sodium.ready;
