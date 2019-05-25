@@ -9,7 +9,7 @@
     <body class="d-flex flex-column h-100">
         <div class="container">
             <h1 class="mt-5">Babble</h1>
-            <p class="lead">说都不会话了。</p>
+            <p class="lead">说都不会话了。<a href="#" data-toggle="modal" data-target="#whatsThisModal">这是什么？</a></p>
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -66,6 +66,44 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="whatsThisModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">这是什么？</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            太长不看：众所周知，国内的社交媒体都有蹩脚的关键词检测机制，给生活带来极大的不便。这个工具能够将含有（或不含）“敏感词”的文本加密并编码成一堆无意义的中文汉字，以绕过关键词检测机制，让您在国内的社交媒体上能够说自己想说的话。
+                        </p>
+                        <p>
+                            为了防止关键词检测机制使用本网页提供的算法解密您的文本并探测关键词，本网页提供设定密码和基底的功能。只有密码和基底的设定与加密时一致才可以正确解密内容。一般来说只要修改密码就足够了（或者使用空密码问题也不大），您可以将密码发给您的受众让其解密您的加密内容。默认的基底是经过我（作者）筛选之后得出的，应该已经最大限度地避免了随机生成敏感词的情况。
+                        </p>
+                        <p>
+                            技术细节：本网页使用 <a href="https://en.wikipedia.org/wiki/Argon2">Argon2i</a> 算法对您的密码生成一个 256 位的密钥（盐为 "BabbleBabbleBabb"），再使用 <a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant">ChaCha20</a>-IETF-<a href="https://en.wikipedia.org/wiki/Poly1305">Poly1305</a> 算法对您的文本进行加密。加密后的结果使用基底（一个包含 256 个汉字的字符串）逐字节转换成对应汉字，原理类似但不等同于 <a href="https://en.wikipedia.org/wiki/Base64">Base64</a>。解密时如果遇到基底以外的汉字，则会跳过这个汉字，所以您可以给加密后的文本添加基底以外的汉字和标点符号使其看起来更加自然。
+                        </p>
+                        <p>
+                            样例（本样例可以使用空密码和默认基底解密）：
+                        </p>
+                        <p>
+                            魔术点草区去些警犬<br>
+                            第一，注意多搞己服，会见外宾用七部华为机。<br>
+                            第四，名留许曰：“视何从应，引狗食之照骗。“马云：“挊气功，转布步。足年据去，然冇事。”
+                        </p>
+                        <p>
+                            本网页在 GitHub 上开源并部署在 GitHub Pages 上。源代码可以在<a href="https://github.com/yvbbrjdr/Babble/tree/gh-pages">这里</a>查看。如果您觉得本网页加载速度太慢，可以自行下载源代码部署在您认为合适的服务器上。如果您对此工具有其他想法，例如编写浏览器插件，可以联系我。
+                        </p>
+                        <p>
+                            免责声明：本软件生成的文本不代表作者本人的观点和意见。使用本软件造成的任何后果由使用者承担。
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
